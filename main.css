@@ -22,13 +22,13 @@ background-color: green;
 }
 
 #hat{
-  
+
   display: flex;
   flex: wrap;
   flex-wrap: wrap;
 }
 
-#Voldemarts-Army{
+#army{
   display: flex;
   flex: wrap;
   flex-wrap: wrap;
