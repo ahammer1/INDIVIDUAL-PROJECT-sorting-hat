@@ -80,7 +80,7 @@ const students = [
     selectedDiv.innerHTML=htmlToRender
   };
     
-   const hat = document.querySelector("#hat"); 
+  const hat = document.querySelector("#hat");
   const army =document.querySelector("#army");
 
    const cardsOnDom = (array) => {
@@ -101,9 +101,9 @@ const students = [
       renderToDom("#hat",domString);
     };
 
-    const armyOnDom = (array) => {
+    const armyOnDom = (expelled) => {
       let domString = "";
-      for (const student of array) {  
+      for (const student of Object.keys(expelled)) {  
       domString += 
   `<div class="card" style="width: 14rem;">
     <div class="card-header">
@@ -121,7 +121,7 @@ const students = [
     cardsOnDom(students);
     armyOnDom(army);
 
-    //filer buttons 
+    //filer buttons for house  
     const filter = (students, studentsHouse) => {
       const studentArray = [];
     
@@ -160,7 +160,7 @@ const students = [
   });
   
 
-  //create form 
+  //create form - adding new student. 
   const form = document.querySelector('form')
   
   const addStudentObj = (event) => {
@@ -176,21 +176,15 @@ const students = [
 const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
 //console.log(sortedHouse);
 
-    //create an object from values
     const addStudentObj = {
       name: name.value,
       house: sortedHouse,    
     };
-    
-      //push to student array
       students.push(addStudentObj);
     
-      //rerender with new student 
       cardsOnDom(students);
       form.reset();
   };
-    
-    //add eventlistner
     
     const submitButton = document.querySelector("#form-submit");
     submitButton.addEventListener('click',addStudentObj);
@@ -198,33 +192,30 @@ const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
 
 // Expelling a student to volde army 
 const appDiv = document.querySelector("#hat");
-const armyDiv = document.querySelector("#army");
-const thearmy = [];
+const idDiv = document.querySelector("#army");
+const theArmy = [];
 
-// 2. Add an event listener to capture clicks
-appDiv.addEventListener('click', (event) => {
-  // 3. check e.target.id includes "delete"
-if(event.target.id.includes('delete')) {
-
-  //4. add logic to remove from array
-const [, studentId] = event.target.id.split("--");
-
+const expel = (event) => {
+  if(event.target.id.includes('delete')) {
+  const [, studentId] = event.target.id.split("--");
 const indexOfStudents = students.findIndex((event) => event.id === Number(studentId)
 ); 
-const expelled = students.splice(indexOfStudents, 1);
-}
+const expelled = students.splice(indexOfStudents, 1)[0];
+expelled.house ="theArmy";
 army.push(expelled);
-expel.addEventListener("click",army);
-armyOnDom(army);
-console.log(expel);
+  };
+  const expel =document.querySelector("#army");
+expel.addEventListener("click",theArmy);
+};
 
-// 5. Repaint the DOM with the updated array
+armyOnDom(army);
 cardsOnDom(students);
 
-}); 
+
 
 const startApp = () =>{
   cardsOnDom(students);
   armyOnDom(army);
+
+  startApp ()
 }
-startApp();
