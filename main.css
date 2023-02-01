@@ -22,13 +22,13 @@ background-color: green;
 }
 
 #hat{
-
   display: flex;
   flex: wrap;
   flex-wrap: wrap;
 }
 
 #army{
+  border: 2px solid green;
   display: flex;
   flex: wrap;
   flex-wrap: wrap;
