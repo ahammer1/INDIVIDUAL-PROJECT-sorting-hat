@@ -93,6 +93,7 @@ const students = [
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
+      <button class="btn btn-danger" id="delete--${student.id}">Expel
     </div>
   </div>`
       }
@@ -138,31 +139,26 @@ const students = [
   });
   
 
-  
-
-
   //create form 
   const form = document.querySelector('form')
   
   const addStudentObj = (event) => {
     event.preventDefault();
-    // grabs values from form
   const name =document.querySelector("#name");
 
-  //const housesToSort = [
-    //"Gryfindor",
-    //"Slytherin",
-    //"Hufflepuff",
-    //"Ravenclaw"
-  //];
-//const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
-
-
+  const housesToSort = [
+    "Gryfindor",
+    "Slytherin",
+    "Hufflepuff",
+    "Ravenclaw"
+  ];
+const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
+//console.log(sortedHouse);
 
     //create an object from values
     const addStudentObj = {
       name: name.value,
-      //sortedHouse: sortedHouse.valueOf,    
+      house: sortedHouse,    
     };
     
   
@@ -179,22 +175,48 @@ const students = [
     const submitButton = document.querySelector("#form-submit");
     submitButton.addEventListener('click',addStudentObj);
     cardsOnDom(students)
-    
+
   ////// UNDERNEATH MAY NOT BE ACCURATE.
-    const expelStudent = (student) => {
-      if(student.expel === true ){
-      return `
-          <div class="student">
-              <h1 class="hat">${student.name}</h1>
-              <p class="card-text">${student.house}</p>
-          </div>
-      `} else {
-          return `
-          <div class="student">
-              <h1 class="voldemarts army">${student.name}</h1>
-             <p class="card-text">${student.house}</p>
-          </div>
-      `
-      }
-  }
+    //const expelStudent = (student) => {
+      //if(student.expel === true ){
+      //return `
+        //  <div class="student">
+          //    <h1 class="hat">${student.name}</h1>
+            //  <p class="card-text">${student.house}</p>
+         // </div>
+      //`} else {
+        //  return `
+          //<div class="student">
+            //  <h1 class="voldemarts army">${student.name}</h1>
+             //<p class="card-text">${student.house}</p>
+          //</div>
+      //`
+     // }
+  //}
 /////WHAT IS ABOVE?
+const appDiv = document.querySelector("#hat");
+
+
+// 2. Add an event listener to capture clicks
+
+appDiv.addEventListener('click', (event) => {
+  // 3. check e.target.id includes "delete"
+if(event.target.id.includes('delete')) {
+  // 4. add logic to remove from array
+const [throwaway, studentId] = event.target.id.split("--");
+
+const indexOfStudents = students.findIndex((event) => event.id === Number(studentId)
+); 
+
+students.splice(indexOfStudents, 1);
+}
+
+
+// 5. Repaint the DOM with the updated array
+cardsOnDom(students)
+}); 
+
+const startApp = () =>{
+  cardsOnDom(students);
+}
+startApp();
