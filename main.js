@@ -81,7 +81,8 @@ const students = [
   };
     
    const hat = document.querySelector("#hat"); 
-  
+  const army =document.querySelector("#army");
+
    const cardsOnDom = (array) => {
       let domString = "";
       for (const student of array) {  
@@ -99,8 +100,28 @@ const students = [
       }
       renderToDom("#hat",domString);
     };
+
+    const armyOnDom = (array) => {
+      let domString = "";
+      for (const student of array) {  
+      domString += 
+  `<div class="card" style="width: 14rem;">
+    <div class="card-header">
+      Expelled Student
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+    </div>
+  </div>`
+      }
+      renderToDom("#army",domString);
+    };
+
     cardsOnDom(students);
-  
+    armyOnDom(army);
+
+    //filer buttons 
     const filter = (students, studentsHouse) => {
       const studentArray = [];
     
@@ -178,7 +199,7 @@ const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
 // Expelling a student to volde army 
 const appDiv = document.querySelector("#hat");
 const armyDiv = document.querySelector("#army");
-const army = [];
+const thearmy = [];
 
 // 2. Add an event listener to capture clicks
 appDiv.addEventListener('click', (event) => {
@@ -193,14 +214,17 @@ const indexOfStudents = students.findIndex((event) => event.id === Number(studen
 const expelled = students.splice(indexOfStudents, 1);
 }
 army.push(expelled);
-//expelled.house = "army"
+expel.addEventListener("click",army);
+armyOnDom(army);
+console.log(expel);
 
 // 5. Repaint the DOM with the updated array
 cardsOnDom(students);
-cardsOnDom(army);
+
 }); 
 
 const startApp = () =>{
   cardsOnDom(students);
+  armyOnDom(army);
 }
 startApp();
