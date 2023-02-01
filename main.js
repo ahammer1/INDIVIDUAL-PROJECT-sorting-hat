@@ -161,7 +161,6 @@ const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
       house: sortedHouse,    
     };
     
-  
       //push to student array
       students.push(addStudentObj);
     
@@ -176,44 +175,29 @@ const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
     submitButton.addEventListener('click',addStudentObj);
     cardsOnDom(students)
 
-  ////// UNDERNEATH MAY NOT BE ACCURATE.
-    //const expelStudent = (student) => {
-      //if(student.expel === true ){
-      //return `
-        //  <div class="student">
-          //    <h1 class="hat">${student.name}</h1>
-            //  <p class="card-text">${student.house}</p>
-         // </div>
-      //`} else {
-        //  return `
-          //<div class="student">
-            //  <h1 class="voldemarts army">${student.name}</h1>
-             //<p class="card-text">${student.house}</p>
-          //</div>
-      //`
-     // }
-  //}
-/////WHAT IS ABOVE?
+// Expelling a student to volde army 
 const appDiv = document.querySelector("#hat");
-
+const armyDiv = document.querySelector("#army");
+const army = [];
 
 // 2. Add an event listener to capture clicks
-
 appDiv.addEventListener('click', (event) => {
   // 3. check e.target.id includes "delete"
 if(event.target.id.includes('delete')) {
-  // 4. add logic to remove from array
-const [throwaway, studentId] = event.target.id.split("--");
+
+  //4. add logic to remove from array
+const [, studentId] = event.target.id.split("--");
 
 const indexOfStudents = students.findIndex((event) => event.id === Number(studentId)
 ); 
-
-students.splice(indexOfStudents, 1);
+const expelled = students.splice(indexOfStudents, 1);
 }
-
+army.push(expelled);
+//expelled.house = "army"
 
 // 5. Repaint the DOM with the updated array
-cardsOnDom(students)
+cardsOnDom(students);
+cardsOnDom(army);
 }); 
 
 const startApp = () =>{
