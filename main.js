@@ -190,23 +190,28 @@ const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
     submitButton.addEventListener('click',addStudentObj);
     cardsOnDom(students)
 
-// Expelling a student to volde army 
 const appDiv = document.querySelector("#hat");
+
+// Expelling a student to volde army 
 const idDiv = document.querySelector("#army");
 const theArmy = [];
 
-const expel = (event) => {
+idDiv.addEventListener = ('click', (event) => {
   if(event.target.id.includes('delete')) {
   const [, studentId] = event.target.id.split("--");
 const indexOfStudents = students.findIndex((event) => event.id === Number(studentId)
 ); 
 const expelled = students.splice(indexOfStudents, 1)[0];
+
+
 expelled.house ="theArmy";
 army.push(expelled);
-  };
-  const expel =document.querySelector("#army");
-expel.addEventListener("click",theArmy);
 };
+});
+expel =document.querySelector("#army");
+
+//expelled.addEventListener("click",theArmy);
+
 
 armyOnDom(army);
 cardsOnDom(students);
