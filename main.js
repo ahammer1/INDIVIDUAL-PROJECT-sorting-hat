@@ -114,14 +114,12 @@ const students = [
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
+      
     </div>
   </div>`
       }
      renderToDom("#army",domString);
     };
-
-    //cardsOnDom(students);
-    //armyOnDom(army);
 
     //filer buttons for house  
     const filter = (students, studentsHouse) => {
@@ -162,7 +160,7 @@ const students = [
   });
   
 
-  //create form - adding new student. 
+  //create form - adding new student and sort  
   const form = document.querySelector('form')
   
   const addStudentObj = (event) => {
@@ -176,7 +174,6 @@ const students = [
     "Ravenclaw"
   ];
 const sortedHouse = housesToSort[Math.floor(Math.random()*housesToSort.length)];
-//console.log(sortedHouse);
 
     const addStudentObj = {
       name: name.value,
@@ -212,7 +209,6 @@ theArmy.push(expelled);
 
 cardsOnDom(students);
 armyOnDom(theArmy);
-//console.log(expelled.house)
 });
 
 
