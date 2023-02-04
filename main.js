@@ -210,8 +210,6 @@ army.push(expelled);
 });
 expel =document.querySelector("#army");
 
-//expelled.addEventListener("click",theArmy);
-
 
 armyOnDom(army);
 cardsOnDom(students);
