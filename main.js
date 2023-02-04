@@ -73,7 +73,8 @@ const students = [
   },
   
   ];
-  
+ 
+
   const renderToDom = (divId, htmlToRender) => {
     const selectedDiv =document.querySelector(divId);
     
@@ -102,6 +103,7 @@ const students = [
     };
 
     const armyOnDom = (array) => {
+      console.log(array)
       let domString = "";
       for (const student of array) {  
       domString += 
@@ -198,21 +200,20 @@ const theArmy = [];
 
 idDiv.addEventListener("click", (event) => {
   if(event.target.id.includes("delete")) {
-    console.log("vjvsbd")
   const [, studentId] = event.target.id.split('--');
 const indexOfStudents = students.findIndex((item) => item.id === Number(studentId)
 ); 
 const expelled = students.splice(indexOfStudents, 1)[0];
 
 expelled.house ="theArmy";
-theArmy.push(expelled[0]);
+theArmy.push(expelled);
 };
-});
 
 
-armyOnDom(theArmy);
 cardsOnDom(students);
-
+armyOnDom(theArmy);
+//console.log(expelled.house)
+});
 
 
 const startApp = () =>{
