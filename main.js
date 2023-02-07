@@ -88,14 +88,13 @@ const students = [
       let domString = "";
       for (const student of array) {  
       domString += 
-  `<div class="card" style="width: 14rem;">
+  `<div class="card" style="width: 14rem; height: 10rem">
     <div class="card-header">
-      First Year Student
     </div>
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
-      <button class="btn btn-danger" id="delete--${student.id}">Expel
+      <button id="delete--${student.id}">Expel
     </div>
   </div>`
       }
@@ -107,9 +106,8 @@ const students = [
       let domString = "";
       for (const student of array) {  
       domString += 
-  `<div class="card" style="width: 14rem;">
+  `<div class="card" style="width: 14rem; height 10 rem;">
     <div class="card-header">
-      Expelled Student
     </div>
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
@@ -168,7 +166,7 @@ const students = [
   const name =document.querySelector("#name");
 
   const housesToSort = [
-    "Gryfindor",
+    "Gryffindor",
     "Slytherin",
     "Hufflepuff",
     "Ravenclaw"
@@ -202,7 +200,7 @@ const indexOfStudents = students.findIndex((item) => item.id === Number(studentI
 ); 
 const expelled = students.splice(indexOfStudents, 1)[0];
 
-expelled.house ="theArmy";
+expelled.house ="Vold's Army";
 theArmy.push(expelled);
 };
 
