@@ -4,6 +4,7 @@
   flex-direction: column;
   background-color: rgb(216, 210, 210);
   padding-bottom: 10%;
+  font-family: 'Franklin Gothic Medium';
 }
 .buttons{
   display: flex;
@@ -47,6 +48,7 @@ background-color: green;
 
 #All{
   width: 100%;
+  background-color: gray;
 }
 
 #hat{
@@ -75,7 +77,5 @@ background-color: green;
 }
 #container{
   margin-top: 10%;
-}
-.d-flex{
- padding-top: 10%; 
+  flex: flex row;
 }

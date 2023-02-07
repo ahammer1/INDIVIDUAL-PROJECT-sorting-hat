@@ -80,7 +80,8 @@ const students = [
     
     selectedDiv.innerHTML=htmlToRender
   };
-    
+
+
   const hat = document.querySelector("#hat");
   const army = document.querySelector("#army");
 
